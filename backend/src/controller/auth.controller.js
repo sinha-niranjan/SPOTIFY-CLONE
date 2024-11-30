@@ -8,13 +8,17 @@ export const authCallback = async (req, res, next) => {
     const user = await User.findOne({ clerkId: id });
 
     if (!user) {
-      // sign up
-      await User.create({ fullName: `${firstName} ${lastName}`, imageUrl });
+      // signup
+      await User.create({
+        clerkId: id,
+        fullName: `${firstName || ""} ${lastName || ""}`.trim(),
+        imageUrl,
+      });
     }
 
     res.status(200).json({ success: true });
   } catch (error) {
-    console.log("Error is auth callback", error);
+    console.log("Error in auth callback", error);
     next(error);
   }
 };
