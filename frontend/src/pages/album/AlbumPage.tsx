@@ -6,9 +6,9 @@ import { Clock, Pause, Play } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const formatDuration = (seconds: number) => {
+export const formatDuration = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
-  const secondsLeft = seconds % 60;
+  const secondsLeft = Math.floor(seconds % 60);
   return `${minutes.toString().padStart(2, "0")}:${secondsLeft
     .toString()
     .padStart(2, "0")}`;
