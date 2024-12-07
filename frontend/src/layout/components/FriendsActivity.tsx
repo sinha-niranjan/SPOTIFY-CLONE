@@ -2,11 +2,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChatStore } from "@/stores/useChatStore";
 import { useUser } from "@clerk/clerk-react";
-import { Divide, HeadphonesIcon, Music, Users } from "lucide-react";
-import React, { useEffect } from "react";
+import { HeadphonesIcon, Music, Users } from "lucide-react";
+import { useEffect } from "react";
 
 const FriendsActivity = () => {
-  const { users, isLoading, error, fetchUsers } = useChatStore();
+  const { users, fetchUsers } = useChatStore();
   const { user } = useUser();
   const isPlaying = true;
   useEffect(() => {
