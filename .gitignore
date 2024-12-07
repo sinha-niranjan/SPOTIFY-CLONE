@@ -5,3 +5,5 @@
 /backend/.env
 
 /frontend/.env.local
+
+/backend/tmp
