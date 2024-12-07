@@ -10,7 +10,7 @@ const uploadToCloudinary = async (file) => {
     return result.secure_url;
   } catch (error) {
     console.log("Error in uploadToCloudinary", error);
-    throw new Error(error);
+    throw new Error("Error uploading to cloudinary");
   }
 };
 
@@ -38,15 +38,15 @@ export const createSong = async (req, res, next) => {
 
     await song.save();
 
-    // if song belongs to any album , then album's songs array is updating
+    // if song belongs to an album, update the album's songs array
     if (albumId) {
       await Album.findByIdAndUpdate(albumId, {
         $push: { songs: song._id },
       });
     }
-    res.status(201).json({ success: true, song });
+    res.status(201).json(song);
   } catch (error) {
-    console.log("Error is createSong", error);
+    console.log("Error in createSong", error);
     next(error);
   }
 };
